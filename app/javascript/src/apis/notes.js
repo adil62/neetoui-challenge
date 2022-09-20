@@ -1,9 +1,9 @@
 import { LIST_NOTES_DUMMY_DATA } from "components/constants";
 
-const index = () => Promise.resolve(LIST_NOTES_DUMMY_DATA);
+const fetch = () => Promise.resolve(LIST_NOTES_DUMMY_DATA);
 
 const notesApi = {
-  index,
+  fetch,
 };
 
 export default notesApi;

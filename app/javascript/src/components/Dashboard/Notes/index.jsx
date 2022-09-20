@@ -28,7 +28,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      const { data } = await notesApi.index();
+      const { data } = await notesApi.fetch();
       setNotes(data);
     } catch (error) {
       logger.error(error);
@@ -37,13 +37,9 @@ const Notes = () => {
     }
   };
 
-  const onEditActionClick = noteId => {
-    logger.info(noteId);
-  };
+  const handleEdit = () => {};
 
-  const onDeleteActionClick = noteId => {
-    logger.info(noteId);
-  };
+  const handleDelete = () => {};
 
   const onMenuBarToggle = () => {
     setShowMenu(!showMenu);
@@ -75,10 +71,10 @@ const Notes = () => {
         {notes.length ? (
           notes.map(note => (
             <Card
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
               key={note.id}
               note={note}
-              onDeleteActionClick={onDeleteActionClick}
-              onEditActionClick={onEditActionClick}
             />
           ))
         ) : (
