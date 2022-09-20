@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
+    "@bigbinary/neeto-commons-frontend": "^2.0.7",
     "@bigbinary/neeto-icons": "^1.8.17",
     "@bigbinary/neetoui": "^3.2.29",
     "@rails/webpacker": "5.4.3",

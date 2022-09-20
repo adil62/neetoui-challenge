@@ -1,15 +1,9 @@
-import axios from "axios";
+import { LIST_NOTES_DUMMY_DATA } from "components/constants";
 
-const fetch = () => axios.get("api/v1/notes");
-const create = payload => axios.post("api/v1/notes", payload);
-const update = (id, payload) => axios.put(`api/v1/notes/${id}`, payload);
-const destroy = payload => axios.post("api/v1/notes/bulk_delete", payload);
+const index = () => Promise.resolve(LIST_NOTES_DUMMY_DATA);
 
 const notesApi = {
-  fetch,
-  create,
-  update,
-  destroy,
+  index,
 };
 
 export default notesApi;
