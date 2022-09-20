@@ -4,18 +4,12 @@ import { Alert, Toastr } from "neetoui";
 
 import notesApi from "apis/notes";
 
-const DeleteAlert = ({
-  refetch,
-  onClose,
-  selectedNoteIds,
-  setSelectedNoteIds,
-}) => {
+const DeleteAlert = ({ refetch, onClose, setSelectedNoteIds }) => {
   const [deleting, setDeleting] = useState(false);
 
   const handleDelete = async () => {
     try {
       setDeleting(true);
-      logger.log(selectedNoteIds);
       await notesApi.destroy();
       Toastr.success("Successfully deleted note");
       onClose();
@@ -33,7 +27,7 @@ const DeleteAlert = ({
       isOpen
       isSubmitting={deleting}
       message="Are you sure you want to delete the note? This action cannot be undone."
-      title={`Delete Note`}
+      title="Delete Note"
       onClose={onClose}
       onSubmit={handleDelete}
     />
