@@ -42,7 +42,8 @@ const Notes = () => {
   };
 
   const onDeleteActionClick = noteId => {
-    logger.info(noteId);
+    setSelectedNoteIds([noteId]);
+    setShowDeleteAlert(true);
   };
 
   const onMenuBarToggle = () => {

@@ -17,8 +17,8 @@ const EditOrDeleteActionDropdown = ({
 
   return (
     <Dropdown buttonStyle="text" icon={dropdownIcon} position="bottom-start">
-      {listItems.map(({ name, handler }) => (
-        <li key={name} onClick={handler}>
+      {listItems.map(({ name, clickHandler }) => (
+        <li key={name} onClick={clickHandler}>
           {name}
         </li>
       ))}
