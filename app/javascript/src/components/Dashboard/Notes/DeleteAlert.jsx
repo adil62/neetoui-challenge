@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Alert } from "neetoui";
+import { Alert, Toastr } from "neetoui";
 
 import notesApi from "apis/notes";
 
@@ -15,11 +15,14 @@ const DeleteAlert = ({
   const handleDelete = async () => {
     try {
       setDeleting(true);
-      await notesApi.destroy({ ids: selectedNoteIds });
+      logger.log(selectedNoteIds);
+      await notesApi.destroy();
+      Toastr.success("Successfully deleted note");
       onClose();
       setSelectedNoteIds([]);
       refetch();
     } catch (error) {
+      Toastr.error("Failed deleting note");
       logger.error(error);
       setDeleting(false);
     }
@@ -29,10 +32,8 @@ const DeleteAlert = ({
     <Alert
       isOpen
       isSubmitting={deleting}
-      message="Are you sure you want to continue? This cannot be undone."
-      title={`Delete ${selectedNoteIds.length} ${
-        selectedNoteIds.length > 1 ? "notes" : "note"
-      }?`}
+      message="Are you sure you want to delete the note? This action cannot be undone."
+      title={`Delete Note`}
       onClose={onClose}
       onSubmit={handleDelete}
     />
