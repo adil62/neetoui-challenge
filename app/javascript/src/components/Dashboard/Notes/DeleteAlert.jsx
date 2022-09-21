@@ -15,8 +15,7 @@ const DeleteAlert = ({
   const handleDelete = async () => {
     try {
       setDeleting(true);
-      logger.log(selectedNoteIds);
-      await notesApi.destroy();
+      await notesApi.destroy(selectedNoteIds);
       Toastr.success("Successfully deleted note");
       onClose();
       setSelectedNoteIds([]);
@@ -33,7 +32,7 @@ const DeleteAlert = ({
       isOpen
       isSubmitting={deleting}
       message="Are you sure you want to delete the note? This action cannot be undone."
-      title={`Delete Note`}
+      title="Delete Note"
       onClose={onClose}
       onSubmit={handleDelete}
     />
