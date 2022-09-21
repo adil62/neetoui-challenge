@@ -9,9 +9,9 @@ export const CONTACTS = [
 export const TAGS = [
   { value: 1, label: "Getting Started" },
   { value: 2, label: "Onboarding" },
-  { value: 2, label: "User flow" },
-  { value: 2, label: "Ux" },
-  { value: 2, label: "Bugs" },
+  { value: 3, label: "User flow" },
+  { value: 4, label: "Ux" },
+  { value: 5, label: "Bugs" },
 ];
 
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
