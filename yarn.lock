@@ -1317,11 +1317,6 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@bigbinary/neeto-commons-frontend@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.7.tgz#7496f957d0c3a7b840484933c6f414c3e14662b7"
-  integrity sha512-tsAZJQG+uFoKJ0DNjffzOn+9n8fesM4956PS9Qv9HJBbxAi6PiO68Hf5NMAalxasPtneJRRU6i7RNeNkR9qfAQ==
-
 "@bigbinary/neeto-icons@^1.8.17":
   version "1.8.17"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.8.17.tgz#c4b01bf0ee742fd24ff12c393e598358bf399ca2"

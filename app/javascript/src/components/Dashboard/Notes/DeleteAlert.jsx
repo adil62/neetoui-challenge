@@ -7,19 +7,18 @@ import notesApi from "apis/notes";
 const DeleteAlert = ({
   refetch,
   onClose,
-  selectedNoteIds,
-  setSelectedNoteIds,
+  selectedNoteId,
+  setSelectedNoteId,
 }) => {
   const [deleting, setDeleting] = useState(false);
 
   const handleDelete = async () => {
     try {
       setDeleting(true);
-      logger.log(selectedNoteIds);
-      await notesApi.destroy();
+      await notesApi.destroy(selectedNoteId);
       Toastr.success("Successfully deleted note");
       onClose();
-      setSelectedNoteIds([]);
+      setSelectedNoteId(null);
       refetch();
     } catch (error) {
       Toastr.error("Failed deleting note");
@@ -33,7 +32,8 @@ const DeleteAlert = ({
       isOpen
       isSubmitting={deleting}
       message="Are you sure you want to delete the note? This action cannot be undone."
-      title={`Delete Note`}
+      size="medium"
+      title="Delete Note"
       onClose={onClose}
       onSubmit={handleDelete}
     />

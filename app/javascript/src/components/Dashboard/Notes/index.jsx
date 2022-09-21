@@ -17,7 +17,7 @@ const Notes = () => {
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [notes, setNotes] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
 
@@ -28,7 +28,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      const { data } = await notesApi.index();
+      const { data } = await notesApi.fetch();
       setNotes(data);
     } catch (error) {
       logger.error(error);
@@ -37,12 +37,10 @@ const Notes = () => {
     }
   };
 
-  const onEditActionClick = noteId => {
-    logger.info(noteId);
-  };
+  const handleEdit = () => {};
 
-  const onDeleteActionClick = noteId => {
-    setSelectedNoteIds([noteId]);
+  const handleDelete = noteId => {
+    setSelectedNoteId(noteId);
     setShowDeleteAlert(true);
   };
 
@@ -76,10 +74,10 @@ const Notes = () => {
         {notes.length ? (
           notes.map(note => (
             <Card
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
               key={note.id}
               note={note}
-              onDeleteActionClick={onDeleteActionClick}
-              onEditActionClick={onEditActionClick}
             />
           ))
         ) : (
@@ -99,8 +97,8 @@ const Notes = () => {
         {showDeleteAlert && (
           <DeleteAlert
             refetch={fetchNotes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
+            selectedNoteId={selectedNoteId}
+            setSelectedNoteId={setSelectedNoteId}
             onClose={() => setShowDeleteAlert(false)}
           />
         )}

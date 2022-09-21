@@ -3,22 +3,23 @@ import React from "react";
 import { MenuHorizontal, MenuVertical } from "neetoicons";
 import { Dropdown } from "neetoui";
 
-const EditOrDeleteActionDropdown = ({
+const ActionDropdown = ({
   entityId,
-  onEditClick,
-  onDeleteClick,
+  handleEdit,
+  handleDelete,
   isVerticalIcon = false,
 }) => {
   const listItems = [
-    { name: "Edit", clickHandler: () => onEditClick(entityId) },
-    { name: "Delete", clickHandler: () => onDeleteClick(entityId) },
+    { name: "Edit", handleClick: () => handleEdit(entityId) },
+    { name: "Delete", handleClick: () => handleDelete(entityId) },
   ];
+
   const dropdownIcon = isVerticalIcon ? MenuVertical : MenuHorizontal;
 
   return (
     <Dropdown buttonStyle="text" icon={dropdownIcon} position="bottom-start">
-      {listItems.map(({ name, clickHandler }) => (
-        <li key={name} onClick={clickHandler}>
+      {listItems.map(({ name, handleClick }) => (
+        <li key={name} onClick={handleClick}>
           {name}
         </li>
       ))}
@@ -26,4 +27,4 @@ const EditOrDeleteActionDropdown = ({
   );
 };
 
-export default EditOrDeleteActionDropdown;
+export default ActionDropdown;

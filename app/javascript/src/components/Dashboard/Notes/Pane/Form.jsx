@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 
-import { Formik, Form } from "formik";
-import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Formik, Form as FormikForm } from "formik";
+import { Check as CheckIcon } from "neetoicons";
+import { Button, Pane, Toastr } from "neetoui";
+import { Input, Textarea, Select } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import { NOTES_FORM_VALIDATION_SCHEMA, TAGS, CONTACTS } from "../constants";
 
-const NoteForm = ({ onClose, refetch, note, isEdit }) => {
+const Form = ({ onClose, refetch, note }) => {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async values => {
+  const handleSubmit = async () => {
     try {
-      if (isEdit) {
-        await notesApi.update(note.id, values);
-      } else {
-        await notesApi.create(values);
-      }
+      await notesApi.create();
       refetch();
       onClose();
+      Toastr.success("Note was created successfully");
     } catch (err) {
       logger.error(err);
+      Toastr.error("Failed creating note");
     }
   };
 
@@ -34,27 +33,49 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className="w-full">
+        <FormikForm className="w-full">
           <Pane.Body className="space-y-6">
             <Input
               required
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter note title"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
-              rows={8}
+              placeholder="Enter note description"
+              rows={3}
+            />
+            <Select
+              isClearable
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="assignedContact"
+              options={CONTACTS}
+              placeholder="Select Contact"
+            />
+            <Select
+              isClearable
+              isMulti
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              options={TAGS}
+              placeholder="Select Tags"
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save Changes"}
+              icon={CheckIcon}
+              label="Save Changes"
               loading={isSubmitting}
               size="large"
               style="primary"
@@ -68,10 +89,10 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               onClick={onClose}
             />
           </Pane.Footer>
-        </Form>
+        </FormikForm>
       )}
     </Formik>
   );
 };
 
-export default NoteForm;
+export default Form;
