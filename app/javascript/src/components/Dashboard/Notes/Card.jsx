@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Clock } from "neetoicons";
-import { Tag, Typography, Avatar } from "neetoui";
+import { Tag, Typography, Avatar, Tooltip } from "neetoui";
 
-import { calculateCreatedAgo } from "./utils";
+import { calculateCreatedAgo, formatToDayTime } from "./utils";
 
 import ActionDropdown from "../ActionDropdown";
 
@@ -32,9 +32,15 @@ const Card = ({
       <div className="ml-auto flex items-center gap-x-2">
         <div className="flex gap-x-2">
           <Clock size="18" />
-          <Typography style="body3" weight="normal">
-            Created {calculateCreatedAgo(createdAt)}
-          </Typography>
+          <Tooltip
+            content={formatToDayTime(createdAt)}
+            followCursor="horizontal"
+            position="bottom"
+          >
+            <Typography style="body3" weight="normal">
+              Created {calculateCreatedAgo(createdAt)}
+            </Typography>
+          </Tooltip>
         </div>
         <Avatar
           size="small"
