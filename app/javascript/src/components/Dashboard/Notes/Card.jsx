@@ -2,32 +2,31 @@ import React from "react";
 
 import { Clock } from "neetoicons";
 import { Tag, Typography, Avatar } from "neetoui";
-import { calculateCreatedAgo } from "utils";
 
-import EditOrDeleteActionDropdown from "../EditOrDeleteActionDropdown";
+import { calculateCreatedAgo } from "./utils";
+
+import ActionDropdown from "../ActionDropdown";
 
 const Card = ({
   note: { id, title, description, tagName, createdAt },
-  onEditActionClick,
-  onDeleteActionClick,
+  handleEdit,
+  handleDelete,
 }) => (
   <div className="mt-3 flex w-full flex-col gap-3 rounded-sm border p-4 shadow-sm">
     <div className="flex justify-between">
       <Typography style="h4" weight="medium">
         {title}
       </Typography>
-      <EditOrDeleteActionDropdown
+      <ActionDropdown
         isVerticalIcon
         entityId={id}
-        onDeleteClick={onDeleteActionClick}
-        onEditClick={onEditActionClick}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
       />
     </div>
-    <div>
-      <Typography style="h5" weight="normal">
-        {description}
-      </Typography>
-    </div>
+    <Typography style="h5" weight="normal">
+      {description}
+    </Typography>
     <div className="flex border-t pt-4">
       <Tag label={tagName} style="secondary" type="outline" />
       <div className="ml-auto flex items-center gap-x-2">
