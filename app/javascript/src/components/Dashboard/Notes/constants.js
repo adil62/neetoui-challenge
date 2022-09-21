@@ -40,8 +40,7 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
         value: yup.number().oneOf(R.pluck("value", TAGS)),
       })
     )
-    .min(1, "At least one tag should be selected")
-    .required("Tag is required"),
+    .min(1, "At least one tag should be selected"),
 });
 
 export const NOTES_TABLE_COLUMN_DATA = [
