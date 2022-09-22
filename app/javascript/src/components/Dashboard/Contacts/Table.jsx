@@ -10,7 +10,7 @@ import ActionDropdown from "../ActionDropdown";
 const renderAvatarWithNameAndRole = (_, { name, role, imageUrl }) => (
   <div className="flex gap-3">
     <Avatar
-      size="medium"
+      size="large"
       user={{
         imageUrl,
       }}
@@ -30,12 +30,13 @@ const renderActionDropdown = (id, handleDelete) => (
     isVerticalIcon={false}
   />
 );
+
 const Table = ({ contacts = [], fetchContacts, handleDelete }) => {
   const [showContactPane, setShowContactPane] = useState(false);
 
   return (
     <>
-      <div className="contacts-table-height w-full">
+      <div className="w-full">
         <NeetoUITable
           rowSelection
           defaultPageSize={10}
