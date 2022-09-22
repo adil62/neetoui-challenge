@@ -9,7 +9,7 @@ import EmptyState from "components/Common/EmptyState";
 
 import Card from "./Card";
 import DeleteAlert from "./DeleteAlert";
-import MenuBar from "./Menubar";
+import MenuBar from "./MenuBar";
 import NewNotePane from "./Pane/Create";
 
 const Notes = () => {
@@ -44,10 +44,6 @@ const Notes = () => {
     setShowDeleteAlert(true);
   };
 
-  const onMenuBarToggle = () => {
-    setShowMenu(!showMenu);
-  };
-
   if (loading) {
     return <PageLoader />;
   }
@@ -57,7 +53,7 @@ const Notes = () => {
       <MenuBar showMenu={showMenu} />
       <Container>
         <Header
-          menuBarToggle={onMenuBarToggle}
+          menuBarToggle={() => setShowMenu(prevShowMenu => !prevShowMenu)}
           title="All Notes"
           actionBlock={
             <Button
