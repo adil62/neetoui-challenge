@@ -44,7 +44,6 @@ const Table = ({ contacts = [], fetchContacts, handleDelete }) => {
           columnData={[
             {
               title: "NAME & ROLE",
-              // dataIndex: "name",
               key: "nameAndRole",
               render: renderAvatarWithNameAndRole,
             },
