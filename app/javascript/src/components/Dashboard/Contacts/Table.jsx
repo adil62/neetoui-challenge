@@ -30,7 +30,6 @@ const renderActionDropdown = (id, handleDelete) => (
     isVerticalIcon={false}
   />
 );
-
 const Table = ({ contacts = [], fetchContacts, handleDelete }) => {
   const [showContactPane, setShowContactPane] = useState(false);
 
