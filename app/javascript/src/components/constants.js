@@ -43,3 +43,14 @@ export const LIST_NOTES_DUMMY_DATA = {
     },
   ],
 };
+
+export const LIST_CONTACTS_DUMMY_DATA = {
+  data: Array.from({ length: 50 }, (_, i) => ({
+    id: i + 1,
+    name: `Ronald richards ${i + 1}`,
+    email: `ronald${i + 1}@gmail.com`,
+    role: "Owner",
+    imageUrl: "https://i.pravatar.cc/300",
+    createdAt: "2022-09-18 03:11:13",
+  })),
+};
