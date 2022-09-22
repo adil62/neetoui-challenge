@@ -14,7 +14,7 @@ export const SIDENAV_LINKS = [
   },
   {
     label: "Contacts",
-    to: "/contact",
+    to: "/contacts",
     icon: UserCircle,
   },
   {
