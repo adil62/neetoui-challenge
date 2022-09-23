@@ -6,11 +6,11 @@ import { Container, Header } from "neetoui/layouts";
 import contactsApi from "apis/contacts";
 
 import DeleteAlert from "./DeleteAlert";
-import MenuBar from "./Menubar";
+import MenuBar from "./MenuBar";
 import NewContactPane from "./Pane/Create";
 import Table from "./Table";
 
-const Contact = () => {
+const Contacts = () => {
   const [loading, setLoading] = useState(true);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
@@ -40,10 +40,6 @@ const Contact = () => {
     setShowDeleteAlert(true);
   };
 
-  const onMenuBarToggle = () => {
-    setShowMenu(prevShowMenu => !prevShowMenu);
-  };
-
   if (loading) {
     return <PageLoader />;
   }
@@ -53,7 +49,7 @@ const Contact = () => {
       <MenuBar showMenu={showMenu} />
       <Container>
         <Header
-          menuBarToggle={onMenuBarToggle}
+          menuBarToggle={() => setShowMenu(prevShowMenu => !prevShowMenu)}
           title="All Contacts"
           actionBlock={
             <Button
@@ -90,4 +86,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contacts;

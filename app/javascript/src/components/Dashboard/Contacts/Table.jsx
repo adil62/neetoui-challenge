@@ -54,13 +54,13 @@ const Table = ({ contacts = [], fetchContacts, handleDelete }) => {
             },
             {
               title: "CREATED AT",
-              dataIndex: "email",
-              key: "email",
+              dataIndex: "createdAt",
+              key: "createdAt",
               render: (_, { createdAt }) => formatToMonthDate(createdAt),
             },
             {
-              dataIndex: "icon_button",
-              key: "icon_button",
+              dataIndex: "iconButton",
+              key: "iconButton",
               render: (_, { id }) => renderActionDropdown(id, handleDelete),
             },
           ]}
